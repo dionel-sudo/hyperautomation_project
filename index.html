@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Process Hyperautomation Project • IUJO</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-color: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-color); line-height: 1.6; padding-bottom: 40px; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+        .hero {
+            background: linear-gradient(135deg, #1e40af, #2563eb);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 { font-size: 2.2rem; margin-top: 15px; font-weight: 800; }
+
+        .card-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .card-section h2 {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 12px;
+        }
+
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .mini-card, .review-card { background: #fdfdfd; border: 1px solid var(--border-color); padding: 20px; border-radius: 8px; }
+        .mini-card h3, .review-card h4 { font-size: 1.1rem; margin-bottom: 8px; color: #0f172a; }
+        .mini-card p, .review-card p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 12px; }
+        .author { font-size: 0.8rem; color: var(--primary-color); font-weight: 600; text-transform: uppercase; }
+
+        .news-banner { background: #f0fdf4; border: 1px solid #bbf7d0; padding: 20px; border-radius: 8px; }
+        .news-tag { background: #16a34a; color: white; padding: 3px 8px; font-size: 0.75rem; border-radius: 4px; font-weight: 600; }
+        .news-content h3 { margin: 10px 0 6px 0; color: #14532d; }
+        .news-content p { color: #166534; font-size: 0.95rem; }
+
+        .ad-card { background: #eff6ff; border: 1px solid #bfdbfe; padding: 25px; border-radius: 8px; position: relative; }
+        .ad-badge { position: absolute; top: 20px; right: 20px; background: #dbeafe; color: var(--primary-color); padding: 4px 10px; font-size: 0.75rem; font-weight: 700; border-radius: 20px; }
+        .ad-card h3 { color: #1e3a8a; margin-bottom: 8px; }
+        .ad-card p { color: #1e40af; margin-bottom: 15px; font-size: 0.95rem; }
+
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+        .stat-box { text-align: center; background: #f8fafc; border: 1px solid var(--border-color); padding: 20px; border-radius: 8px; }
+        .stat-number { display: block; font-size: 2.2rem; font-weight: 800; color: var(--primary-color); margin-bottom: 5px; }
+        .stat-box p { font-size: 0.9rem; color: var(--text-muted); }
+
+        .highlight-box { border: 2px dashed #93c5fd; }
+        .form-grid { display: flex; flex-direction: column; gap: 15px; margin-top: 15px; }
+        .form-group label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 5px; }
+        .form-group input[type="text"], .form-group textarea { width: 100%; padding: 10px 12px; border: 1px solid var(--border-color); border-radius: 6px; font-size: 0.95rem; }
+
+        .audio-recorder-box { background: #f8fafc; padding: 15px; border-radius: 6px; border: 1px solid var(--border-color); }
+        .recorder-controls { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+
+        .btn-primary { background: var(--primary-color); color: white; border: none; padding: 10px 20px; border-radius: 6px; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; text-align: center; }
+        .btn-primary:hover { background: var(--primary-hover); }
+
+        .btn-secondary { background: #e2e8f0; color: #334155; border: none; padding: 8px 14px; border-radius: 6px; font-weight: 600; cursor: pointer; }
+        .btn-secondary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        .btn-delete { background: #fee2e2; color: #991b1b; border: none; padding: 6px 12px; border-radius: 4px; font-size: 0.85rem; cursor: pointer; margin-top: 10px; }
+        .alert { background: #dcfce7; color: #166534; padding: 12px 16px; border-radius: 6px; margin-bottom: 20px; border: 1px solid #bbf7d0; font-weight: 600; }
+        .date { font-size: 0.8rem; color: var(--text-muted); font-weight: normal; float: right; }
+        .references-list { padding-left: 20px; font-size: 0.95rem; color: var(--text-muted); }
+        .references-list li { margin-bottom: 8px; }
+        footer { text-align: center; margin-top: 50px; color: var(--text-muted); font-size: 0.85rem; }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="container">
+            <span class="badge">English Project • IUJO</span>
+            <h1>Process Hyperautomation: Machine Learning & RPA</h1>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- Section 1: Opinion Articles -->
+        <section class="card-section">
+            <h2>1. Opinion Articles</h2>
+            <div class="grid-2">
+                <article class="mini-card">
+                    <h3>The Cognitive Shift in RPA</h3>
+                    <p>Traditional bots followed rigid rules. By integrating Machine Learning models, RPA evolves into intelligent cognitive decision-making workflows.</p>
+                    <span class="author">By Student Researcher</span>
+                </article>
+                <article class="mini-card">
+                    <h3>Human-in-the-Loop Necessity</h3>
+                    <p>Hyperautomation does not mean full human replacement. Strategic oversight ensures ethical boundaries and continuous accuracy in critical operations.</p>
+                    <span class="author">By Development Team</span>
+                </article>
+            </div>
+        </section>
+
+        <!-- Section 2: Featured News -->
+        <section class="card-section">
+            <h2>2. Featured News</h2>
+            <div class="news-banner">
+                <div class="news-content">
+                    <span class="news-tag">Global Trend</span>
+                    <h3>Gartner Predicts 70% of Enterprises Will Adopt Hyperautomation</h3>
+                    <p>Organizations are rapidly combining low-code application platforms, process mining, and artificial intelligence to automate end-to-end business operations.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Tech Ads -->
+        <section class="card-section">
+            <h2>3. Tech Ads & Advertisements</h2>
+            <div class="ad-card">
+                <div class="ad-badge">Sponsored Tool</div>
+                <h3>IntelliBot Studio Pro</h3>
+                <p>Deploy ML-powered software robots in minutes. Connect APIs, parse invoices visually, and accelerate workflows up to 300%.</p>
+                <a href="anuncio.html" class="btn-primary">Explore Enterprise Plan</a>
+            </div>
+        </section>
+
+        <!-- Section 4: Fun Facts -->
+        <section class="card-section">
+            <h2>4. Tech Trivia & Fun Facts</h2>
+            <div class="grid-3">
+                <div class="stat-box">
+                    <span class="stat-number">80%</span>
+                    <p>Reduction in manual data entry errors achieved through intelligent OCR classifiers.</p>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">10x</span>
+                    <p>Faster process execution compared to legacy manual workflows.</p>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">24/7</span>
+                    <p>Continuous autonomous operations without human fatigue downtime.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Section: Opinions & Voice Note -->
+        <section class="card-section highlight-box">
+            <h2>Leave Your Opinion & Voice Note</h2>
+            <p>Share your perspective on hyperautomation or record/upload an audio note for the class.</p>
+            
+            <form id="opinionForm" class="form-grid">
+                <div class="form-group">
+                    <label for="nombre">Your Name:</label>
+                    <input type="text" id="nombre" name="nombre" required placeholder="E.g., Dionel Rojas">
+                </div>
+                <div class="form-group">
+                    <label for="comentario">Your Opinion:</label>
+                    <textarea id="comentario" name="comentario" rows="3" required placeholder="Write your thoughts here..."></textarea>
+                </div>
+
+                <div class="form-group audio-recorder-box">
+                    <label>Voice Audio Note (Record or Upload File):</label>
+                    <div class="recorder-controls" style="margin-bottom: 10px;">
+                        <button type="button" id="recordBtn" class="btn-secondary">🔴 Start Recording</button>
+                        <button type="button" id="stopBtn" class="btn-secondary" disabled>⏹ Stop</button>
+                        <span id="recordingStatus" style="font-size: 0.9rem; color: #666;">Ready to record</span>
+                    </div>
+                    
+                    <div style="margin-top: 8px;">
+                        <label style="font-size: 0.85rem; color: #555; font-weight: normal;">Or upload an audio file (MP3/WAV):</label>
+                        <input type="file" id="audioFileInput" accept="audio/*" style="font-size: 0.85rem; margin-top: 4px;">
+                    </div>
+
+                    <audio id="audioPreview" controls style="margin-top: 10px; display:none; width:100%;"></audio>
+                </div>
+
+                <button type="submit" class="btn-primary">Submit Opinion</button>
+            </form>
+        </section>
+
+        <!-- Dynamic reviews container -->
+        <div id="reviewsContainer"></div>
+
+        <!-- Section 6: References -->
+        <section class="card-section">
+            <h2>6. References</h2>
+            <ul class="references-list">
+                <li>Gartner. (2025). <em>Market Guide for Hyperautomation Technologies</em>. Gartner Research.</li>
+                <li>Davenport, T. H., & Ronanki, R. (2018). Artificial Intelligence for the Real World. <em>Harvard Business Review</em>, 96(1), 108-116.</li>
+                <li>IEEE Transactions on Software Engineering. (2024). <em>Integrating Machine Learning Models into Robotic Process Automation Frameworks</em>.</li>
+            </ul>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Process Hyperautomation Project • IUJO Academic Portfolio.</p>
+        </div>
+    </footer>
+
+    <!-- Script for LocalStorage, Recorder & File Upload -->
+    <script>
+        let mediaRecorder;
+        let audioChunks = [];
+        let recordedAudioBase64 = null;
+
+        const recordBtn = document.getElementById('recordBtn');
+        const stopBtn = document.getElementById('stopBtn');
+        const audioPreview = document.getElementById('audioPreview');
+        const recordingStatus = document.getElementById('recordingStatus');
+        const audioFileInput = document.getElementById('audioFileInput');
+        const opinionForm = document.getElementById('opinionForm');
+
+        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices.getUserMedia({ audio: true })
+                .then(stream => {
+                    mediaRecorder = new MediaRecorder(stream);
+                    mediaRecorder.ondataavailable = event => audioChunks.push(event.data);
+                    mediaRecorder.onstop = () => {
+                        const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+                        audioChunks = [];
+                        const audioUrl = URL.createObjectURL(audioBlob);
+                        audioPreview.src = audioUrl;
+                        audioPreview.style.display = 'block';
+
+                        const reader = new FileReader();
+                        reader.readAsDataURL(audioBlob);
+                        reader.onloadend = () => { recordedAudioBase64 = reader.result; };
+                        recordingStatus.textContent = "Audio recorded successfully!";
+                    };
+                })
+                .catch(err => {
+                    console.warn("Microphone blocked or unavailable:", err);
+                    recordingStatus.textContent = "Microphone blocked (Use file upload option below).";
+                });
+        } else {
+            recordingStatus.textContent = "Your browser does not support direct recording.";
+        }
+
+        if (recordBtn && stopBtn) {
+            recordBtn.addEventListener('click', () => {
+                if (!mediaRecorder) {
+                    alert("Recorder not available. Please use the audio file upload option.");
+                    return;
+                }
+                audioChunks = [];
+                recordedAudioBase64 = null;
+                mediaRecorder.start();
+                recordBtn.disabled = true;
+                stopBtn.disabled = false;
+                recordingStatus.textContent = "Recording in progress...";
+            });
+
+            stopBtn.addEventListener('click', () => {
+                if (mediaRecorder) mediaRecorder.stop();
+                recordBtn.disabled = false;
+                stopBtn.disabled = true;
+            });
+        }
+
+        if (audioFileInput) {
+            audioFileInput.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const audioUrl = URL.createObjectURL(file);
+                    audioPreview.src = audioUrl;
+                    audioPreview.style.display = 'block';
+
+                    const reader = new FileReader();
+                    reader.readAsDataURL(file);
+                    reader.onloadend = () => {
+                        recordedAudioBase64 = reader.result;
+                        recordingStatus.textContent = "Audio file loaded successfully!";
+                    };
+                }
+            });
+        }
+
+        if (opinionForm) {
+            opinionForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const nuevaOpinion = {
+                    id: Date.now(),
+                    nombre: document.getElementById('nombre').value,
+                    comentario: document.getElementById('comentario').value,
+                    audio: recordedAudioBase64,
+                    fecha: new Date().toISOString().slice(0, 19).replace('T', ' ')
+                };
+
+                let opiniones = JSON.parse(localStorage.getItem('opiniones_hyperautomation')) || [];
+                opiniones.unshift(nuevaOpinion);
+                localStorage.setItem('opiniones_hyperautomation', JSON.stringify(opiniones));
+
+                opinionForm.reset();
+                audioPreview.style.display = 'none';
+                recordedAudioBase64 = null;
+                recordingStatus.textContent = "Ready to record";
+                if (audioFileInput) audioFileInput.value = '';
+
+                mostrarAlerta("Opinion and audio registered successfully!");
+                cargarOpiniones();
+            });
+        }
+
+        function mostrarAlerta(texto) {
+            const alertaExistente = document.getElementById('successAlert');
+            if (alertaExistente) alertaExistente.remove();
+
+            const alertBox = document.createElement('div');
+            alertBox.className = 'alert';
+            alertBox.id = 'successAlert';
+            alertBox.textContent = texto;
+
+            const mainContainer = document.querySelector('main');
+            mainContainer.insertBefore(alertBox, mainContainer.firstChild);
+
+            setTimeout(() => {
+                alertBox.style.transition = 'opacity 0.5s ease';
+                alertBox.style.opacity = '0';
+                setTimeout(() => alertBox.remove(), 500);
+            }, 4000);
+        }
+
+        function cargarOpiniones() {
+            let contenedor = document.getElementById('reviewsContainer');
+            if (!contenedor) {
+                contenedor = document.createElement('div');
+                contenedor.id = 'reviewsContainer';
+                document.querySelector('main').appendChild(contenedor);
+            }
+
+            let opiniones = JSON.parse(localStorage.getItem('opiniones_hyperautomation')) || [];
+            if (opiniones.length === 0) {
+                contenedor.innerHTML = '<p style="text-align:center; color:#64748b; margin: 20px 0;">No opinions submitted yet. Be the first!</p>';
+                return;
+            }
+
+            let htmlHTML = '';
+            opiniones.forEach(op => {
+                htmlHTML += `
+                    <div class="review-card" id="review-${op.id}" style="margin-bottom: 20px;">
+                        <h4>${escapeHtml(op.nombre)} <span class="date">${op.fecha}</span></h4>
+                        <p>${escapeHtml(op.comentario)}</p>
+                        ${op.audio ? `<audio controls class="review-audio" style="width:100%; margin-top:8px;"><source src="${op.audio}" type="audio/wav">Your browser does not support audio.</audio>` : ''}
+                        <button type="button" class="btn-delete" onclick="eliminarOpinion(${op.id})">🗑️ Delete</button>
+                    </div>
+                `;
+            });
+            contenedor.innerHTML = htmlHTML;
+        }
+
+        function eliminarOpinion(id) {
+            if (confirm('Are you sure you want to delete this audio and opinion?')) {
+                let opiniones = JSON.parse(localStorage.getItem('opiniones_hyperautomation')) || [];
+                opiniones = opiniones.filter(op => op.id !== id);
+                localStorage.setItem('opiniones_hyperautomation', JSON.stringify(opiniones));
+
+                const card = document.getElementById('review-' + id);
+                if (card) {
+                    card.style.transition = 'opacity 0.3s ease';
+                    card.style.opacity = '0';
+                    setTimeout(() => card.remove(), 300);
+                } else {
+                    cargarOpiniones();
+                }
+            }
+        }
+
+        function escapeHtml(text) {
+            return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+        }
+
+        document.addEventListener('DOMContentLoaded', cargarOpiniones);
+    </script>
+</body>
+</html>

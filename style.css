@@ -1,0 +1,341 @@
+:root {
+    --primary-color: #2563eb;
+    --primary-hover: #1d4ed8;
+    --bg-color: #f8fafc;
+    --card-bg: #ffffff;
+    --text-color: #1e293b;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding-bottom: 40px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header / Hero */
+.hero {
+    background: linear-gradient(135deg, #1e40af, #2563eb);
+    color: white;
+    padding: 60px 0;
+    text-align: center;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+}
+
+.badge {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.hero h1 {
+    font-size: 2.2rem;
+    margin-top: 15px;
+    font-weight: 800;
+}
+
+/* Secciones y Tarjetas */
+.card-section {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.card-section h2 {
+    font-size: 1.4rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    border-left: 4px solid var(--primary-color);
+    padding-left: 12px;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.mini-card, .review-card {
+    background: #fdfdfd;
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    border-radius: 8px;
+    transition: transform 0.2s;
+}
+
+.mini-card:hover {
+    transform: translateY(-2px);
+}
+
+.mini-card h3, .review-card h4 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    color: #0f172a;
+}
+
+.mini-card p, .review-card p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+}
+
+.author {
+    font-size: 0.8rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* Noticias */
+.news-banner {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.news-tag {
+    background: #16a34a;
+    color: white;
+    padding: 3px 8px;
+    font-size: 0.75rem;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.news-content h3 {
+    margin: 10px 0 6px 0;
+    color: #14532d;
+}
+
+.news-content p {
+    color: #166534;
+    font-size: 0.95rem;
+}
+
+/* Tech Ads */
+.ad-card {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    padding: 25px;
+    border-radius: 8px;
+    position: relative;
+}
+
+.ad-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #dbeafe;
+    color: var(--primary-color);
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 20px;
+}
+
+.ad-card h3 {
+    color: #1e3a8a;
+    margin-bottom: 8px;
+}
+
+.ad-card p {
+    color: #1e40af;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+}
+
+/* Fun Facts Grid */
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.stat-box {
+    text-align: center;
+    background: #f8fafc;
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.stat-number {
+    display: block;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.stat-box p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* Podcast */
+.section-desc {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: 15px;
+}
+
+.podcast-player {
+    background: #f1f5f9;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.podcast-info span {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+/* Formulario e Interactivo */
+.highlight-box {
+    border: 2px dashed #93c5fd;
+}
+
+.form-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+
+.audio-recorder-box {
+    background: #f8fafc;
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+}
+
+.recorder-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* Botones */
+.btn-primary {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-primary:hover {
+    background: var(--primary-hover);
+}
+
+.btn-secondary {
+    background: #e2e8f0;
+    color: #334155;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-secondary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-delete {
+    background: #fee2e2;
+    color: #991b1b;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.btn-delete:hover {
+    background: #fecaca;
+}
+
+/* Alertas y Listas */
+.alert {
+    background: #dcfce7;
+    color: #166534;
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    border: 1px solid #bbf7d0;
+    font-weight: 600;
+}
+
+.date {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: normal;
+    float: right;
+}
+
+.references-list {
+    padding-left: 20px;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+.references-list li {
+    margin-bottom: 8px;
+}
+
+footer {
+    text-align: center;
+    margin-top: 50px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
